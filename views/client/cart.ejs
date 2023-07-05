@@ -1,0 +1,46 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/cart.css">
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+        <main>
+            <% if (products.length > 0) { %>
+                <div class="cart-content">
+                    <ul class="cart__item-list">
+                        <% products.forEach(p => { %>
+                            <li class="cart__item">
+                                <h1><%= p.productId.name %></h1>
+                                <div>
+                                    <h2 class="inline-block-child">
+                                        <label for="<%= p.productId._id + 'quantity' %>">Quantity:</label>
+                                        <input 
+                                            class="quantityInput"
+                                            type="number" 
+                                            name="<%= p.productId._id %>" 
+                                            id="<%= p.productId._id + 'quantity' %>" 
+                                            step="1" 
+                                            min="1"
+                                            max="<%= p.productId.amount %>"
+                                            value="1">
+                                    </h2>
+                                    <input type="hidden" value="<%= p.productId._id %>" name="productId">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button class="btn danger" type="button" onclick="deleteCartProduct(this)">
+                                        Delete
+                                    </button>
+                                </div>
+                            </li>
+                        <% }) %>
+                    </ul>
+                    <hr>
+                    <div class="centered">
+                        <button class="btn" onclick="pushCheckoutLink()">Checkout</button>
+                    </div>
+                </div>
+            <% } else { %>
+                <h1>No Products in Cart!</h1>
+            <% } %>
+        </main>
+        <%- include('../includes/end.ejs') %>
+        <script src="/js/fetch.js"></script>

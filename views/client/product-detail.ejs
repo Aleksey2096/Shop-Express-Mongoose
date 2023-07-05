@@ -1,0 +1,25 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+        <main class="centered product-details">
+            <h1><%= product.name %></h1>
+            <hr>
+            <div class="image">
+                <img src="/<%= product.imagePath %>" alt="<%= product.name %>">
+            </div>
+            <h2>
+                $<%= product.price %> 
+                <span class="smallerText">State:</span> <%= product.state %>/10 
+                <span class="smallerText">Amount:</span> <%= product.amount %>
+            </h2>
+            <p><%= product.description %></p>
+            <% if (isLoggedIn) { %>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <input type="hidden" name="productId" value="<%= product._id %>">
+                <button class="btn" type="button" onclick="postAddToCart(this)">Add to Cart</button>
+            <% } %>
+        </main>
+        <%- include('../includes/end.ejs') %>
+        <script src="/js/fetch.js"></script>

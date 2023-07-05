@@ -1,0 +1,27 @@
+<section class="pagination">    
+    <% if (lastPage <= 7) { %>
+        <% for (let i=1; i <= lastPage; ++i) { %>
+            <a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+        <% } %>
+    <% } else if (currentPage < 5) { %>
+        <% for (let i=1; i <= 5; ++i) { %>
+            <a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+        <% } %>
+        <a href="#" class="dots">...</a>
+        <a href="?page=<%= lastPage %>"><%= lastPage %></a>
+    <% } else if (lastPage - currentPage < 4) { %>    
+        <a href="?page=1">1</a>
+        <a href="#" class="dots">...</a>
+        <% for (let i=lastPage - 4; i <= lastPage; ++i) { %>
+            <a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+        <% } %>
+    <% } else { %>    
+        <a href="?page=1">1</a>
+        <a href="#" class="dots">...</a>
+        <% for (let i=currentPage - 1; i <= currentPage + 1; ++i) { %>
+            <a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+        <% } %>
+        <a href="#" class="dots">...</a>
+        <a href="?page=<%= lastPage %>"><%= lastPage %></a>        
+    <% } %>    
+</section>
