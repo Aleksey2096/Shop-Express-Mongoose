@@ -24,7 +24,6 @@
 
 ## About The Project
 
-***
 Huge Pharma is an online pharmacy.\
 Client selects the required drug and specific implementation of this drug from the list of available ones.
 Adds the drug to shopping cart. Then customer selects from the cart items he wants to order
@@ -49,8 +48,6 @@ All users can change the language.
 
 ## Features
 
-***
-
 - Implementation of Authentication and Authorization with Spring Security
 - Pagination, search and sort on various pages for the best user experience
 - Different databases for tests and production
@@ -62,8 +59,6 @@ All users can change the language.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Components Used In The Project:
-
-***
 
 - Java 17
 - Spring Boot 3.0.5
@@ -82,8 +77,6 @@ All users can change the language.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Roles In Project
-
-***
 
 ### All users (including unauthorised)
 
@@ -124,8 +117,6 @@ All users can change the language.
 
 ## Screenshots
 
-***
-
 ### Main Page:
 ![main-page]
 ### Cart Page:
@@ -145,7 +136,6 @@ All users can change the language.
 
 ## DataBase Scheme
 
-***
 ![database-schema]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
