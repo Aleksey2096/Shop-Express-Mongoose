@@ -1,3 +1,4 @@
+const fs = require('fs');
 const express = require('express');
 const session = require('express-session');
 const csrf = require('csurf');
@@ -7,6 +8,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const MongoDBStore = require('connect-mongodb-session')(session);
+const compression = require('compression');
+const morgan = require('morgan');
 
 const User = require('./entities/user');
 const adminRoutes = require('./routes/admin');
@@ -16,7 +19,7 @@ const errorRoutes = require('./routes/error');
 
 const app = express();
 
-const MONGODB_URI = 'mongodb+srv://root:1111@cluster0.wojol5r.mongodb.net/simonstarget?retryWrites=true&w=majority';
+const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.wojol5r.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority`;
 
 const sessionStore = new MongoDBStore({
     uri: MONGODB_URI,
@@ -41,6 +44,11 @@ const fileFilter = (req, file, cb) => {
 }
 
 app.set('view engine', 'ejs');
+
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+
+app.use(compression());
+app.use(morgan('combined', { stream: accessLogStream }));
 
 app.use(flash());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -98,7 +106,7 @@ mongoose.connect(MONGODB_URI, {
     useUnifiedTopology: true
 })
     .then(result => {
-        app.listen(3000);
+        app.listen(process.env.PORT || 3000);
     })
     .catch(err => {
         console.log(err);

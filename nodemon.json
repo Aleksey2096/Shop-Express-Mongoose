@@ -1,0 +1,8 @@
+{
+    "env": {
+        "MONGO_USER": "root",
+        "MONGO_PASSWORD": "1111",
+        "MONGO_DEFAULT_DATABASE": "simonstarget",
+        "STRIPE_KEY": "sk_test_51NNwqEAs3eQVc0QDdj2w2hZX1Lb90ZLy4OSuW4k9Dx3ImUQJraiwDtaBCygV2ERnLV8leK77l0twwieyyFojRA2P008Zorv5Xi"
+    }
+}

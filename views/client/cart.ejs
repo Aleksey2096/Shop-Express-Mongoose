@@ -26,7 +26,7 @@
                                     </h2>
                                     <input type="hidden" value="<%= p.productId._id %>" name="productId">
                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                                    <button class="btn danger" type="button" onclick="deleteCartProduct(this)">
+                                    <button class="btn danger deleteFromCartButton" type="button">
                                         Delete
                                     </button>
                                 </div>
@@ -35,7 +35,7 @@
                     </ul>
                     <hr>
                     <div class="centered">
-                        <button class="btn" onclick="pushCheckoutLink()">Checkout</button>
+                        <button class="btn pushCheckoutLinkButton">Checkout</button>
                     </div>
                 </div>
             <% } else { %>

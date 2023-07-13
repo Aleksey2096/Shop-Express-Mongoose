@@ -49,6 +49,8 @@ Administrator views all users, block/unblock them and also views all completed o
 - Payments are made through Stripe api
 - CSRF Protection
 - Storing hashed passwords in database
+- Compressing assets with Compression
+- Request logging with Morgan
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -96,7 +98,6 @@ Administrator views all users, block/unblock them and also views all completed o
 - View all users
 - Block/Unblock any user
 - View purchase history of all users
-- Create invoice in pdf format for any order
 
 ***
 

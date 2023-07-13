@@ -24,11 +24,11 @@
                                     <input type="hidden" value="<%= user._id %>" name="userId">
                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                     <% if (user.isBlocked) { %>
-                                        <button class="btn danger" type="button" onclick="patchChangeUserBlockStatus(this)">
+                                        <button class="btn blockUserButton danger" type="button">
                                             Unblock user
                                         </button>
                                     <% } else { %>
-                                        <button class="btn" type="button" onclick="patchChangeUserBlockStatus(this)">
+                                        <button class="btn blockUserButton" type="button">
                                             Block user
                                         </button>
                                     <% } %>

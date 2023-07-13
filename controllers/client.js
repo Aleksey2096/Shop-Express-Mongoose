@@ -1,4 +1,4 @@
-const stripe = require('stripe')('sk_test_51NNwqEAs3eQVc0QDdj2w2hZX1Lb90ZLy4OSuW4k9Dx3ImUQJraiwDtaBCygV2ERnLV8leK77l0twwieyyFojRA2P008Zorv5Xi');
+const stripe = require('stripe')(process.env.STRIPE_KEY);
 const { validationResult } = require('express-validator');
 
 const fileHandler = require('../util/file-handler');

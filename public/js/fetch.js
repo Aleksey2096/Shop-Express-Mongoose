@@ -1,6 +1,6 @@
-const postAddToCart = btn => {
-    const prodId = btn.parentNode.querySelector('[name=productId]').value;
-    const csrf = btn.parentNode.querySelector('[name=_csrf]').value;
+Array.from(document.getElementsByClassName('addToCartButton')).forEach(btn => btn.addEventListener('click', function () {
+    const prodId = this.parentNode.querySelector('[name=productId]').value;
+    const csrf = this.parentNode.querySelector('[name=_csrf]').value;
 
     fetch('/cart', {
         method: 'POST',
@@ -21,13 +21,13 @@ const postAddToCart = btn => {
         .catch(err => {
             console.log(err);
         })
-}
+}));
 
-const deleteUserProduct = btn => {
-    const prodId = btn.parentNode.querySelector('[name=productId]').value;
-    const csrf = btn.parentNode.querySelector('[name=_csrf]').value;
+Array.from(document.getElementsByClassName('deleteUserProductButton')).forEach(btn => btn.addEventListener('click', function () {
+    const prodId = this.parentNode.querySelector('[name=productId]').value;
+    const csrf = this.parentNode.querySelector('[name=_csrf]').value;
 
-    const productElement = btn.closest('article');
+    const productElement = this.closest('article');
 
     fetch('/product/' + prodId, {
         method: 'DELETE',
@@ -48,13 +48,13 @@ const deleteUserProduct = btn => {
         .catch(err => {
             console.log(err);
         })
-}
+}));
 
-const deleteCartProduct = btn => {
-    const prodId = btn.parentNode.querySelector('[name=productId]').value;
-    const csrf = btn.parentNode.querySelector('[name=_csrf]').value;
+Array.from(document.getElementsByClassName('deleteFromCartButton')).forEach(btn => btn.addEventListener('click', function () {
+    const prodId = this.parentNode.querySelector('[name=productId]').value;
+    const csrf = this.parentNode.querySelector('[name=_csrf]').value;
 
-    const cartElement = btn.closest('li');
+    const cartElement = this.closest('li');
 
     fetch('/cart/' + prodId, {
         method: 'DELETE',
@@ -75,19 +75,19 @@ const deleteCartProduct = btn => {
         .catch(err => {
             console.log(err);
         })
-}
+}));
 
-const patchChangeUserBlockStatus = btn => {
-    if (btn.classList.contains('danger')) {
-        btn.innerText = 'Block user';
+Array.from(document.getElementsByClassName('blockUserButton')).forEach(btn => btn.addEventListener('click', function () {
+    if (this.classList.contains('danger')) {
+        this.innerText = 'Block user';
     } else {
-        btn.innerText = 'Unblock user';
+        this.innerText = 'Unblock user';
     }
-    btn.classList.toggle('danger');
+    this.classList.toggle('danger');
 
 
-    const userId = btn.parentNode.querySelector('[name=userId]').value;
-    const csrf = btn.parentNode.querySelector('[name=_csrf]').value;
+    const userId = this.parentNode.querySelector('[name=userId]').value;
+    const csrf = this.parentNode.querySelector('[name=_csrf]').value;
 
     fetch('/admin/change-user-block-status', {
         method: 'PATCH',
@@ -108,13 +108,13 @@ const patchChangeUserBlockStatus = btn => {
         .catch(err => {
             console.log(err);
         })
-}
+}));
 
-const pushCheckoutLink = () => {
+Array.from(document.getElementsByClassName('pushCheckoutLinkButton')).forEach(btn => btn.addEventListener('click', function () {
     const inputArr = document.querySelectorAll('input.quantityInput');
     let checkoutHref = '/checkout?';
     inputArr.forEach(i => {
         checkoutHref += i.name + '=' + i.value + '&';
     });
     window.location.href = checkoutHref.slice(0, -1);
-}
+}));
